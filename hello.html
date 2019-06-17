@@ -6,7 +6,130 @@
 </head>
 <body>
 
-hello
+<h1>hello, world!</h1>
+<script type="text/javascript">
+    console.log("hello, world!");
+
+    let a = 1; // 数値
+    let b = 'abc'; // 文字列はクォーテーションもしくはだぶるクォーテーションで括る
+    console.log("aは数値" + a);
+    console.log("bは文字列" + b);
+
+    let c = true; // 真
+    let d = false; // 偽
+    console.log("a = " + c);
+    console.log("b = " + d);
+
+    // 配列の宣言
+    let e = [];
+    let f = [1,2,3];
+
+    // 配列に要素を加える
+    e.push(1);
+    e.push(2);
+    e.push('hello, world');
+    f.push(4);
+
+    // 配列を参照する
+    console.log("a[0] = " + e[0]);
+    e[0] = 10;
+
+    console.log(e);
+    console.log(f);
+
+    // 配列の大きさ
+    console.log("aの要素数は " + e.length);
+    console.log("bの要素数は " + f.length);
+
+    // undefined: 変数が初期化されていないことを示すデータ型（本当になにも入っていない）
+    let g;
+    console.log(g);
+
+    // null: 中身がないことを示すデータ型 (意図的にnullが入っていることを示す)
+    h = null;
+    console.log(h);
+
+
+
+    let say_bye = function(name) {
+        return "bye, " + name;
+    };
+    console.log(say_bye("Taro"));
+
+
+    // Arrayオブジェクト
+    let arr = new Array(2);
+    arr[0] = 1;
+    arr[1] = 2;
+    arr.push("hello");
+    console.log(arr);
+
+    //（補足）2次元配列
+    let arr_2d = new Array(3);
+    for(let i = 0; i < 3; i++) {
+        arr_2d[i] = new Array(3);
+        for(let j = 0; j < 3; j++) {
+            arr_2d[i][j] = 0;
+        }
+    }
+
+    // Dateオブジェクト
+    let now = new Date();
+    console.log(now);
+    now.setMonth(now.getMonth() + 3);　//３か月後
+    now.setDate(now.getDate() + 3); //3日後
+    now.setHours(now.getHours() + 3); //3時間後
+    now.setMinutes(now.getMinutes() + 3); //3分後
+    console.log(now);
+
+    // Mathオブジェクト
+    let random = Math.random(); // 0.0-1.0の乱数
+    console.log(random);
+    let round = Math.round(random); // 四捨五入
+    console.log(round);
+    let y = Math.sin(Math.PI/2.0); // サイン関数
+    console.log(y);
+
+
+    // ハッシュ
+    let user = {
+        name : 'taro', // key = name, value = taro
+        age : 20,
+        gender: 'male'
+    };
+
+    // キーを指定してアクセス
+    console.log(user['name']);
+    console.log(user.name);
+
+    // 値を変更
+    user.age = 30;
+    console.log(user.age);
+
+    // キーを追加
+    user['password'] = '123456789';
+    user.hobby = 'football';
+    console.log(user);
+    console.log(user.hobby);
+
+
+    let image =[512][512][3];
+    let random2 = Math.floor(Math.random()*256);
+    image[2] = random2;
+    let sub;
+    let sub2;
+    let sub3;
+    let sub4;
+    let arr_3d = new image(0);
+    for(let i = 0; i < 512; i++) {
+        arr_3d[i] = new image(1);
+        for(let j = 0; j < 512; j+2) {
+            arr_2d[i][j] = new image(2)
+            for(let k =0; k)
+        }
+    }
+
+</script>
 
 </body>
 </html>
