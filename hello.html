@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<canvas id ="my-canvas" style=" width: 512px; height: 512px" ></canvas>
 
 <h1>hello, world!</h1>
 <script type="text/javascript">
@@ -112,23 +113,63 @@
     console.log(user);
     console.log(user.hobby);
 
+    let hei=
+        Array.from({length: 512}, (v, k) => k+1); //=> [1,2,3,4,…,512]
 
-    let image =[512][512][3];
-    let random2 = Math.floor(Math.random()*256);
-    image[2] = random2;
-    let sub;
-    let sub2;
-    let sub3;
-    let sub4;
-    let arr_3d = new image(0);
+    let wid=[];
     for(let i = 0; i < 512; i++) {
-        arr_3d[i] = new image(1);
-        for(let j = 0; j < 512; j+2) {
-            arr_2d[i][j] = new image(2)
-            for(let k =0; k)
-        }
+        hei[i] = Array.from({length: 512}, (v, k) => k+1); //=> [1,2,3,4,…,512]
     }
 
+
+    let random2 = Math.floor(Math.random()*256);
+    let red = 0;
+    let blue = 0;
+    let green = 0;
+    let value =[red, blue, green];
+
+    let image = hei;
+    for(let i = 0; i < 512; i++) {
+        for(let j = 0; j < 512; j++) {
+            image[i][j] = [Math.floor(Math.random()*256),Math.floor(Math.random()*256),Math.floor(Math.random()*256)];
+
+        }
+    }
+    console.log(image[0][0]);
+    console.log(image[1][0]);
+
+    let temp = [red,blue,green];
+
+    let arr_4d = [];
+    for(let i = 0; i < 512; i = i+2) {
+        let line =[];
+        for(let j = 0; j < 512;j = j+2) {
+            temp[0]= image[i][j][0]+image[i+1][j][0]+image[i][j+1][0]+image[i+1][j+1][0];
+            temp[1]= image[i][j][1]+image[i+1][j][1]+image[i][j+1][1]+image[i+1][j+1][1];
+            temp[2]= image[i][j][2]+image[i+1][j][2]+image[i][j+1][2]+image[i+1][j+1][2];
+            line.push([temp[0]/4,temp[1]/4,temp[2]/4], [temp[0]/4,temp[1]/4,temp[2]/4]);
+        }
+        arr_4d.push(line);
+        arr_4d.push(line);
+    }
+
+
+    let canvas = document.getElementById('my-canvas');
+    let context = canvas.getContext('2d');
+    let imageDate = context.getImageData(0, 0, canvas.width, canvas.height);
+    let width = imageDate.width;
+    let height = imageDate.height;
+    let index = 0;
+    for (let x = 0; x < width; x++){
+        for (let y = 0; y < height; y++) {
+            index =(( width * y) + x) * 4;
+            imageDate.data[index]  =arr_4d[x][y][0];
+            imageDate.data[index+1] =arr_4d[x][y][1];
+            imageDate.data[index+2] =arr_4d[x][y][2];
+            imageDate.data[index+3] =128;
+        }
+    }
+    context.putImageData(imageDate, 0,0);
 </script>
 
 </body>
